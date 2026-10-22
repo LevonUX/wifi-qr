@@ -116,7 +116,7 @@ function luminance(hex) {
 
 function passwordWarning({ security, password }) {
   if (security === 'nopass') return '';
-  if (!password) return 'Leave empty only if the network really has no password.';
+  if (!password) return '';
   if (security === 'WPA' && (password.length < 8 || password.length > 63)) {
     return 'WPA passwords are usually 8–63 characters – double-check it.';
   }

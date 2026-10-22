@@ -384,15 +384,15 @@ select option { background: var(--surface-2); color: var(--ink); }
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding: 16px;
+  padding: 32px;
   border-left: 1px solid var(--line);
   background: radial-gradient(120% 70% at 50% 0%, rgb(94 106 210 / .1), transparent 60%), #0b0c0d;
 }
 
-.preview { display: grid; place-items: center; padding: 8px 0 0; }
+.preview { display: grid; place-items: center; }
 
 /* Buttons and notes line up with the card's edges. */
-.preview-col > :not(.preview) { width: 100%; max-width: 290px; margin-inline: auto; }
+.preview-col > :not(.preview) { width: 100%; max-width: 296px; margin-inline: auto; }
 
 /* The card is a physical object: it stays paper-white. */
 .card {
@@ -400,7 +400,7 @@ select option { background: var(--surface-2); color: var(--ink); }
   --card-muted: #6b6f76;
   --card-accent: #08090a;
   width: 100%;
-  max-width: 290px;
+  max-width: 296px;
   /* The title's line box adds ~3px above the letters; with the code's own
      quiet zone this makes the visible gap top, sides and bottom the same. */
   padding: 30px 20px 20px;
@@ -531,8 +531,8 @@ select option { background: var(--surface-2); color: var(--ink); }
   align-items: center;
   justify-content: center;
   gap: 6px;
-  height: 32px;
-  padding: 0 12px;
+  height: 40px;
+  padding: 0 16px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgb(255 255 255 / .05);
@@ -562,12 +562,6 @@ select option { background: var(--surface-2); color: var(--ink); }
 .status.error { color: var(--warn); }
 .status:empty { display: none; }
 
-.privacy {
-  margin: 0;
-  font-size: 12px;
-  text-align: center;
-  color: var(--faint);
-}
 
 /* Info */
 
@@ -635,10 +629,21 @@ select option { background: var(--surface-2); color: var(--ink); }
   margin-top: auto;
   padding: 16px 0 20px;
   border-top: 1px solid var(--line);
-  font-size: 13px;
-  color: var(--faint);
+  font-size: 14px;
+  color: var(--muted);
 }
-.site-footer p { margin: 0; text-align: center; }
+.site-footer p {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px 8px;
+  text-align: center;
+}
+.site-footer a.footer-brand { display: inline-flex; align-items: center; padding: 4px 2px; color: var(--ink); }
+.site-footer a.footer-brand:hover { opacity: .8; }
+.footer-logo { width: 62px; height: 12px; display: block; }
 .site-footer a { color: var(--muted); }
 .site-footer a:hover { color: var(--ink); }
 
@@ -655,14 +660,13 @@ select option { background: var(--surface-2); color: var(--ink); }
 }
 
 @media (max-width: 560px) {
+  .card, .preview-col > :not(.preview) { max-width: 260px; }
   .header-nav a { display: none; }
-  .badge { font-size: 0; gap: 0; width: 32px; padding: 0; justify-content: center; }
-  .badge svg { width: 15px; height: 15px; }
+  .badge { font-size: 12px; padding: 0 10px; }
 }
 
 @media (max-width: 420px) {
   .controls { padding: 2px 14px 10px; }
-  .preview-col { padding: 14px; }
   .field-row.stack-sm { grid-template-columns: minmax(0, 1fr); gap: 0; }
   /* 16px keeps iOS Safari from zooming into focused fields. */
   input[type="text"], input[type="password"], select { font-size: 16px; }
@@ -674,7 +678,7 @@ select option { background: var(--surface-2); color: var(--ink); }
 @media print {
   :root { color-scheme: light; }
   body { background: #fff; display: block; min-height: 0; }
-  .site-header, .intro, .controls, .actions, .status, .privacy, .info, .site-footer { display: none !important; }
+  .site-header, .intro, .controls, .actions, .status, .how, .site-footer { display: none !important; }
   .wrap { max-width: none; padding: 0; }
   .app { display: block; border: 0; box-shadow: none; background: none; }
   .preview-col { display: block; padding: 0; border: 0; background: none; }
