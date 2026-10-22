@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WiFi QR Code Generator – Free Printable Wi-Fi Card</title>
+  <meta name="description" content="Make a QR code that joins your Wi-Fi network in one scan. Pick a shape, print a card for guests, or download PNG and SVG. Free, no sign-up, runs entirely in your browser.">
+  <meta name="theme-color" content="#08090a">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:title" content="WiFi QR Code Generator">
+  <meta property="og:description" content="Turn your Wi-Fi name and password into a scannable QR card. Free and private – nothing leaves your browser.">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="assets/style.css">
+  <script type="module" src="assets/app.js"></script>
+</head>
+<body class="paper-a4">
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="./" aria-label="WiFi QR home">
+        <img src="assets/favicon.svg" alt="" width="28" height="28">
+        <span>WiFi&nbsp;QR</span>
+      </a>
+      <nav class="header-nav">
+        <a href="#how">How it works</a>
+        <span class="badge" title="No server, no tracking, no uploads">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Runs entirely in your browser
+        </span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <p class="eyebrow"><span class="pill">WiFi QR code generator · Free · No sign-up</span></p>
+      <h1>Share your Wi-Fi<br>with a single scan</h1>
+      <p>Guests scan, phones join. Type your network details, choose a look, then print a card for the fridge or download the code.</p>
+    </section>
+
+    <div class="workspace app">
+      <form id="wifi-form" class="controls" autocomplete="off" novalidate>
+        <fieldset>
+          <legend>
+            <span>Network</span>
+            <label class="check" title="The network doesn't broadcast its name">
+              <input id="hidden" name="hidden" type="checkbox">
+              <span>Hidden network</span>
+            </label>
+          </legend>
+
+          <label class="field">
+            <span class="label">Network name (SSID)</span>
+            <input id="ssid" name="ssid" type="text" maxlength="64" placeholder="e.g. Home-5G" spellcheck="false" autocapitalize="off" required>
+          </label>
+
+          <div class="field-row stack-sm">
+            <label class="field">
+              <span class="label">Security</span>
+              <select id="security" name="security">
+                <option value="WPA">WPA / WPA2 / WPA3</option>
+                <option value="WEP">WEP (legacy)</option>
+                <option value="nopass">None – open network</option>
+              </select>
+            </label>
+
+            <label class="field" id="password-field">
+              <span class="label">Password</span>
+              <span class="input-with-button">
+                <input id="password" name="password" type="password" maxlength="64" spellcheck="false" autocapitalize="off" autocomplete="new-password">
+                <button type="button" id="toggle-password" class="icon-button" aria-label="Show password" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                </button>
+              </span>
+              <span class="hint" id="password-hint" aria-live="polite"></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>
+            <span>Style</span>
+            <label class="check">
+              <input id="frame" name="frame" type="checkbox">
+              <span>Outline</span>
+            </label>
+          </legend>
+
+          <div class="field-row stack-md">
+            <div class="field">
+              <span class="label" id="shape-label">Shape</span>
+              <div class="tiles" role="radiogroup" aria-labelledby="shape-label">
+                <label class="tile" title="Square"><input type="radio" name="shape" value="square" checked><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/></svg><span class="sr-only">Square</span></span></label>
+                <label class="tile" title="Circle"><input type="radio" name="shape" value="circle"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/></svg><span class="sr-only">Circle</span></span></label>
+                <label class="tile" title="Hexagon"><input type="radio" name="shape" value="hexagon"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 19.4 7.75v8.5L12 20.5l-7.4-4.25v-8.5Z"/></svg><span class="sr-only">Hexagon</span></span></label>
+                <label class="tile" title="Triangle"><input type="radio" name="shape" value="triangle"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 21 19.5H3Z"/></svg><span class="sr-only">Triangle</span></span></label>
+              </div>
+            </div>
+            <div class="field">
+              <span class="label" id="eye-label">Corners</span>
+              <div class="tiles" role="radiogroup" aria-labelledby="eye-label">
+                <label class="tile" title="Square corners"><input type="radio" name="eye" value="square"><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="1" class="ring"/><rect x="8" y="8" width="8" height="8" rx=".5" class="fill"/></svg><span class="sr-only">Square corners</span></span></label>
+                <label class="tile" title="Rounded corners"><input type="radio" name="eye" value="rounded" checked><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5.5" class="ring"/><rect x="8" y="8" width="8" height="8" rx="2.4" class="fill"/></svg><span class="sr-only">Rounded corners</span></span></label>
+                <label class="tile" title="Round corners"><input type="radio" name="eye" value="circle"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.8" class="ring"/><circle cx="12" cy="12" r="4" class="fill"/></svg><span class="sr-only">Round corners</span></span></label>
+                <label class="tile" title="Leaf corners"><input type="radio" name="eye" value="leaf"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path class="ring" d="M11.2 3.2H19.2A1.6 1.6 0 0 1 20.8 4.8V12.8A8 8 0 0 1 12.8 20.8H4.8A1.6 1.6 0 0 1 3.2 19.2V11.2A8 8 0 0 1 11.2 3.2Z"/><path class="fill" d="M11.5 8H15.5A.5.5 0 0 1 16 8.5V12.5A3.5 3.5 0 0 1 12.5 16H8.5A.5.5 0 0 1 8 15.5V11.5A3.5 3.5 0 0 1 11.5 8Z"/></svg><span class="sr-only">Leaf corners</span></span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="field-row stack-md">
+            <div class="field">
+              <span class="label" id="pattern-label">Dots</span>
+              <div class="tiles" role="radiogroup" aria-labelledby="pattern-label">
+                <label class="tile" title="Classic squares"><input type="radio" name="pattern" value="square"><span><svg viewBox="0 0 24 24" aria-hidden="true"><g class="fill"><rect x="3.4" y="3.4" width="5.2" height="5.2"/><rect x="15.4" y="3.4" width="5.2" height="5.2"/><rect x="3.4" y="9.4" width="5.2" height="5.2"/><rect x="9.4" y="9.4" width="5.2" height="5.2"/><rect x="9.4" y="15.4" width="5.2" height="5.2"/><rect x="15.4" y="15.4" width="5.2" height="5.2"/></g></svg><span class="sr-only">Classic squares</span></span></label>
+                <label class="tile" title="Round dots"><input type="radio" name="pattern" value="dots" checked><span><svg viewBox="0 0 24 24" aria-hidden="true"><g class="fill"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="12" cy="12" r="2.5"/><circle cx="12" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/></g></svg><span class="sr-only">Round dots</span></span></label>
+                <label class="tile" title="Soft blocks"><input type="radio" name="pattern" value="rounded"><span><svg viewBox="0 0 24 24" aria-hidden="true"><g class="fill"><rect x="3" y="3" width="6" height="6" rx="2.6"/><rect x="15" y="3" width="6" height="6" rx="2.6"/><rect x="3" y="9" width="6" height="6" rx="2.6"/><rect x="9" y="9" width="6" height="6" rx="2.6"/><rect x="9" y="15" width="6" height="6" rx="2.6"/><rect x="15" y="15" width="6" height="6" rx="2.6"/><rect x="3" y="6" width="6" height="6"/><rect x="6" y="9" width="6" height="6"/><rect x="9" y="12" width="6" height="6"/><rect x="12" y="15" width="6" height="6"/></g></svg><span class="sr-only">Soft blocks</span></span></label>
+                <label class="tile" title="Diamonds"><input type="radio" name="pattern" value="diamonds"><span><svg viewBox="0 0 24 24" aria-hidden="true"><g class="fill"><path d="M6 3.2 8.8 6 6 8.8 3.2 6Z"/><path d="M18 3.2 20.8 6 18 8.8 15.2 6Z"/><path d="M6 9.2 8.8 12 6 14.8 3.2 12Z"/><path d="M12 9.2 14.8 12 12 14.8 9.2 12Z"/><path d="M12 15.2 14.8 18 12 20.8 9.2 18Z"/><path d="M18 15.2 20.8 18 18 20.8 15.2 18Z"/></g></svg><span class="sr-only">Diamonds</span></span></label>
+                <label class="tile" title="Vertical pills"><input type="radio" name="pattern" value="pill-v"><span><svg viewBox="0 0 24 24" aria-hidden="true"><g class="fill"><rect x="3.6" y="3.6" width="4.8" height="10.8" rx="2.4"/><rect x="15.6" y="3.6" width="4.8" height="4.8" rx="2.4"/><rect x="9.6" y="9.6" width="4.8" height="10.8" rx="2.4"/><rect x="15.6" y="15.6" width="4.8" height="4.8" rx="2.4"/></g></svg><span class="sr-only">Vertical pills</span></span></label>
+                <label class="tile" title="Hearts"><input type="radio" name="pattern" value="hearts"><span><svg viewBox="0 0 24 24" aria-hidden="true"><g class="fill"><path d="M6 8.6 3.7 6.2a1.45 1.45 0 0 1 2.3-1.9 1.45 1.45 0 0 1 2.3 1.9Z"/><path d="M18 8.6 15.7 6.2a1.45 1.45 0 0 1 2.3-1.9 1.45 1.45 0 0 1 2.3 1.9Z"/><path d="M6 14.6 3.7 12.2a1.45 1.45 0 0 1 2.3-1.9 1.45 1.45 0 0 1 2.3 1.9Z"/><path d="M12 14.6 9.7 12.2a1.45 1.45 0 0 1 2.3-1.9 1.45 1.45 0 0 1 2.3 1.9Z"/><path d="M12 20.6 9.7 18.2a1.45 1.45 0 0 1 2.3-1.9 1.45 1.45 0 0 1 2.3 1.9Z"/><path d="M18 20.6 15.7 18.2a1.45 1.45 0 0 1 2.3-1.9 1.45 1.45 0 0 1 2.3 1.9Z"/></g></svg><span class="sr-only">Hearts</span></span></label>
+              </div>
+            </div>
+            <div class="field">
+              <span class="label" id="color-label">Colour</span>
+              <div class="tiles" role="radiogroup" aria-labelledby="color-label">
+                <label class="tile" title="Ink"><input type="radio" name="color" value="#111827" checked><span><i class="chip" style="--c:#111827"></i><span class="sr-only">Ink</span></span></label>
+                <label class="tile" title="Pine"><input type="radio" name="color" value="#0f3d3a"><span><i class="chip" style="--c:#0f3d3a"></i><span class="sr-only">Pine</span></span></label>
+                <label class="tile" title="Navy"><input type="radio" name="color" value="#1e3a8a"><span><i class="chip" style="--c:#1e3a8a"></i><span class="sr-only">Navy</span></span></label>
+                <label class="tile" title="Rust"><input type="radio" name="color" value="#7c2d12"><span><i class="chip" style="--c:#7c2d12"></i><span class="sr-only">Rust</span></span></label>
+                <label class="tile" title="Plum"><input type="radio" name="color" value="#581c87"><span><i class="chip" style="--c:#581c87"></i><span class="sr-only">Plum</span></span></label>
+                <label class="tile" title="Custom colour"><input type="radio" name="color" value="custom"><span><i class="chip rainbow"></i><span class="sr-only">Custom colour</span></span><input type="color" id="custom-color" value="#9d174d" aria-label="Pick a custom colour"></label>
+              </div>
+              <span class="hint warn" id="contrast-hint" aria-live="polite"></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>
+            <span>Card</span>
+            <label class="check">
+              <input id="show-password" name="show-password" type="checkbox">
+              <span>Show password</span>
+            </label>
+          </legend>
+
+          <div class="field-row">
+            <label class="field">
+              <span class="label">Heading</span>
+              <input id="heading" name="heading" type="text" maxlength="40" value="Scan to connect">
+            </label>
+            <div class="field">
+              <span class="label" id="paper-label">Print size</span>
+              <div class="tiles" role="radiogroup" aria-labelledby="paper-label">
+                <label class="tile" title="A4 · 210 × 297 mm"><input type="radio" name="paper" value="a4" checked><span class="tile-text">A4</span></label>
+                <label class="tile" title="A5 · 148 × 210 mm"><input type="radio" name="paper" value="a5"><span class="tile-text">A5</span></label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+      <section class="preview-col" aria-label="Preview and download">
+        <div class="preview">
+          <article class="card" id="card" aria-live="polite">
+            <div class="card-head">
+              <h2 class="card-title" id="card-title">Scan to connect</h2>
+            </div>
+            <div class="card-qr" id="qr"></div>
+            <dl class="card-details">
+              <div id="card-pass-row" hidden><dt>Password</dt><dd id="card-pass" class="mono"></dd></div>
+            </dl>
+          </article>
+        </div>
+
+        <div class="actions">
+          <div class="dropdown">
+            <button type="button" class="btn primary" id="download" aria-haspopup="menu" aria-expanded="false" aria-controls="download-menu" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Download
+            </button>
+            <div class="menu" id="download-menu" role="menu" hidden>
+              <button type="button" role="menuitem" id="dl-png"><span>PNG</span><small>Image, 1200 × 1200 px</small></button>
+              <button type="button" role="menuitem" id="dl-svg"><span>SVG</span><small>Vector, scales to any size</small></button>
+            </div>
+          </div>
+          <button type="button" class="btn" id="print" disabled>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9V3h10v6M7 17H4v-7a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v7h-3M7 14h10v7H7Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+            Print
+          </button>
+        </div>
+        <p class="status" id="status" role="status"></p>
+        <p class="privacy">
+          Your network name and password are turned into a QR code right here, on this device. Nothing is uploaded, stored or tracked.
+        </p>
+      </section>
+    </div>
+
+    <section class="how" id="how" aria-labelledby="how-title">
+      <h2 class="section-title" id="how-title">How it works</h2>
+      <p class="section-sub">What the code contains, which phones read it, and how to keep your network safe.</p>
+      <div class="info">
+      <div>
+        <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 7 3 12l5 5M16 7l5 5-5 5M13.5 5l-3 14"/></svg></span>
+        <h2>A text format phones already read</h2>
+        <p>Phones understand a small text format for Wi-Fi details: the network name, the type of security and the password. This page writes your details in that format and draws it as a QR code. When someone scans it with their camera, the phone offers to join the network – no typing a long password letter by letter.</p>
+      </div>
+      <div>
+        <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></span>
+        <h2>Which phones can scan it?</h2>
+        <p>Any recent iPhone (iOS 11 and later) and most Android phones (Android 10 and later) read Wi-Fi codes straight from the built-in camera. Older Android phones can use Google Lens or a scanner app.</p>
+      </div>
+      <div>
+        <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 19.8 7.5v9L12 21l-7.8-4.5v-9Z"/><path d="m8.8 12.2 2.2 2.2 4.3-4.6"/></svg></span>
+        <h2>Is the shape safe to use?</h2>
+        <p>Yes. The codes use the highest level of error correction, which leaves room to trim the corners into a circle, hexagon or triangle. Keep the colour dark against the white card and print the code at least 3&nbsp;cm wide.</p>
+      </div>
+      <div>
+        <span class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.5v2.5"/></svg></span>
+        <h2>A note on security</h2>
+        <p>Anyone who scans the card can join your network, so treat it like the password itself. For visitors, consider a separate guest network, and print a new card whenever you change the password.</p>
+      </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Built with qr-code-shapes · Need logos, colors or custom designs? <a href="https://koloqr.com">KoloQR</a></p>
+    </div>
+  </footer>
+</body>
+</html>
